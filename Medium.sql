@@ -3,7 +3,7 @@ CREATE TABLE `users` (
   `full_name` varchar(100) NOT NULL,
   `email` varchar(100) UNIQUE NOT NULL,
   `avatar` varchar(255),
-  `created_at` timestamp DEFAULT "now()"
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 );
 
 CREATE TABLE `reading_lists` (
@@ -22,7 +22,7 @@ CREATE TABLE `posts` (
   `post_id` integer PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
   `visible` boolean DEFAULT false,
-  `created_at` timestamp DEFAULT "now()",
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `og_image` varchar(255),
   `content` text,
   `user_id` integer,
@@ -40,8 +40,8 @@ CREATE TABLE `comments` (
   `comment_id` integer PRIMARY KEY AUTO_INCREMENT,
   `post_id` integer,
   `content` text NOT NULL,
-  `created_at` timestamp DEFAULT "now()",
-  `updated_ad` timestamp,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_ad` timestamp DEFAULT CURRENT_TIMESTAMP,
   `comment_parent_id` integer
 );
 
